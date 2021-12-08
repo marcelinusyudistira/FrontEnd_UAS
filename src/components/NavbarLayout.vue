@@ -158,14 +158,23 @@ export default {
     },
     readData() {
       var url = this.$api + '/user/' + localStorage.getItem('id');
-        this.$http.get(url, {
-            headers: {
-                'Authorization' : 'Bearer ' + localStorage.getItem('token')
-            }
-        }).then(response => {
-            this.user = response.data.data;
-        })
+      this.$http.get(url, {
+        headers: {
+          'Authorization' : 'Bearer ' + localStorage.getItem('token')
+        }
+      }).then(response => {
+        this.user = response.data.data;
+      })
     },
+    applyRegistration(userID, authToken){
+      var url = this.$api + '/verify';
+      this.$http.post(url, {
+        data:{
+          id: userID,
+          token: authToken
+        }
+      });
+    }
   },
   computed: {
     formTitle() {
@@ -174,6 +183,12 @@ export default {
     },
     mounted() {
         this.readData();
+        var registerQuery = this.$route.query.confirm;
+        if(registerQuery != null){
+          var userIndex = this.$route.query.id;
+          this.applyRegistration(userIndex, registerQuery);
+          this.$router.replace({name: 'Login'})
+        }
     },
 };
 </script>
