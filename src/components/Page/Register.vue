@@ -3,7 +3,7 @@
         <v-card 
             class="mx-auto hidden-sm-and-down"
             max-width="800px">
-            <v-form>
+            <v-form v-model="valid" ref="form">
                 <div class="d-flex">
                     <v-img
                         width="200px"
@@ -55,7 +55,7 @@
                 height="300px"
                 src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"/>
             <v-container fluid>
-                <v-form>
+                <v-form v-model="valid" ref="form">
                     <div align="left">
                         <v-card-title class="font-weight-bold">
                             Pertama kali datang? <br/>
