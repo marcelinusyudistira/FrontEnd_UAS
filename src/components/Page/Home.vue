@@ -12,19 +12,19 @@
         <v-carousel-item
           v-for="cset in carousel"
           :key="cset">
-          <v-sheet
-            :color="cset.col"
+          <v-img
+            :src="cset.img"
             height="100%"
             tile>
             <v-row
               class="fill-height"
               align="center"
               justify="center">
-              <div class="text-h2 mx-5">
+              <div class="text-h2 mx-5 dark">
                 {{ cset.title }}
               </div>
             </v-row>
-          </v-sheet>
+          </v-img>
         </v-carousel-item>
       </v-carousel>
       <v-spacer/>
@@ -64,8 +64,8 @@
     data: () => ({
       items: [],
       carousel: [
-        { title: 'Barang Baru!', col:"red" },
-        { title: 'Gebyar Diskon', col:"green" },
+        { title: 'Barang Baru!', img:"https://images.pexels.com/photos/17796/christmas-xmas-gifts-presents.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
+        { title: 'Gebyar Diskon', img:"https://images.pexels.com/photos/5625130/pexels-photo-5625130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" },
       ],
     }),
     methods: {
